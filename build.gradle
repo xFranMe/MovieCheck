@@ -7,8 +7,8 @@ plugins {
 
 sonarqube {
     properties {
-        property "sonar.projectKey", "xFranMe_MovieCheck"
-        property "sonar.organization", "xfranme"
+        property "sonar.projectKey", "xFranMe_MovieCheck2"
+        property "sonar.organization", "xfranme-1"
         property "sonar.host.url", "https://sonarcloud.io"
     }
 }
