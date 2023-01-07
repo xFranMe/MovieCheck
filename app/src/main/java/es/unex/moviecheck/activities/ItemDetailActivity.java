@@ -15,7 +15,7 @@ import es.unex.moviecheck.adapters.TabsViewPagerAdapter;
 import es.unex.moviecheck.model.Comments;
 import es.unex.moviecheck.model.Films;
 import es.unex.moviecheck.sharedInterfaces.ItemDetailInterface;
-import es.unex.moviecheck.viewModels.ItemDetailActivityViewModel;
+import es.unex.moviecheck.viewmodels.ItemDetailActivityViewModel;
 import es.unex.moviecheck.R;
 
 public class ItemDetailActivity extends AppCompatActivity implements ItemDetailInterface, CommentAdapter.DeleteCommentInterface {
@@ -25,7 +25,6 @@ public class ItemDetailActivity extends AppCompatActivity implements ItemDetailI
     private ViewPager2 viewPager2;
 
     // Objeto película con el que se recupera la información básica de la película seleccionada
-    //private LiveData<Films> film;
     private Films film;
 
     // Referencia al ViewModel
@@ -64,12 +63,12 @@ public class ItemDetailActivity extends AppCompatActivity implements ItemDetailI
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                // Do not needed
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                // Do not needed
             }
         });
     }

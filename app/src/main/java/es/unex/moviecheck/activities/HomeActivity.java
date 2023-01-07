@@ -26,7 +26,7 @@ import es.unex.moviecheck.adapters.FilmAdapter;
 import es.unex.moviecheck.adapters.FilmListAdapter;
 import es.unex.moviecheck.fragments.ProfileFragment;
 import es.unex.moviecheck.model.Films;
-import es.unex.moviecheck.viewModels.HomeActivityViewModel;
+import es.unex.moviecheck.viewmodels.HomeActivityViewModel;
 import es.unex.moviecheck.R;
 import es.unex.moviecheck.databinding.ActivityMainBinding;
 
@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity implements ProfileFragment.P
 
         getWindow().getDecorView().findViewsWithText(textViews, getTitle(), View.FIND_VIEWS_WITH_TEXT);
 
-        if(textViews.size() > 0) {
+        if(!textViews.isEmpty()) {
             AppCompatTextView appCompatTextView = null;
             if(textViews.size() == 1) {
                 appCompatTextView = (AppCompatTextView) textViews.get(0);

@@ -1,4 +1,4 @@
-package es.unex.moviecheck.viewModels;
+package es.unex.moviecheck.viewmodels;
 
 import android.util.Log;
 

@@ -20,7 +20,7 @@ import es.unex.moviecheck.model.Films;
 import es.unex.moviecheck.model.Genre;
 import es.unex.moviecheck.model.Pendings;
 import es.unex.moviecheck.model.Rating;
-import es.unex.moviecheck.networkAPI.FilmsNetworkDataSource;
+import es.unex.moviecheck.network.FilmsNetworkDataSource;
 import es.unex.moviecheck.room.CommentDAO;
 import es.unex.moviecheck.room.FavoritesDAO;
 import es.unex.moviecheck.room.FilmDAO;
@@ -79,14 +79,12 @@ public class Repository {
         this.commentDAO = commentDAO;
         this.filmsGenresListDAO = filmsGenresListDAO;
         this.filmsNetworkDataSource = filmsNetworkDataSource;
-
         // LiveData that fetches films and genres from network
         LiveData<Films[]> filmsNetworkData = filmsNetworkDataSource.getCurrentFilms();
         LiveData<Genre[]> genresNetworkData = filmsNetworkDataSource.getCurrentGenres();
         // As long as the repository exists, observe the network LiveData.
         // If that LiveData changes, update the database.
         filmsNetworkData.observeForever(newFilmsFromNetwork -> mExecutors.diskIO().execute(() -> {
-
             // Como se añade el rating a las películas cargadas de la API, aquellas que tengan votos no son reemplazadas en la BD
             HashMap<Integer,Films> ratedFilms = new HashMap<>();
             for (Films i : filmDAO.getRatedFilms()) ratedFilms.put(i.getId(),i);
@@ -96,7 +94,6 @@ public class Repository {
                 filmsFetched.remove(entry.getKey());
             }
             List<Films> notRatedFilmsList = new ArrayList<>(filmsFetched.values());
-
             // Insert our new films into local database
             filmDAO.insertAllFilms(notRatedFilmsList);
             Log.d(LOG_TAG, "Nuevas películas insertadas en Room");
@@ -202,9 +199,9 @@ public class Repository {
     /**
      * Retorna las películas marcadas como favoritas por el usuario.
      *
-     * @return HashMap con las películas favoritas del usuario.
+     * @return Map con las películas favoritas del usuario.
      */
-    public HashMap<Integer, Films> getUserFavoritesFilms() {
+    public Map<Integer, Films> getUserFavoritesFilms() {
         return userFavoriteFilms;
     }
 
@@ -213,7 +210,7 @@ public class Repository {
      *
      * @return HashMap con las películas pendientes del usuario.
      */
-    public HashMap<Integer, Films> getUserPendingsFilms() {
+    public Map<Integer, Films> getUserPendingsFilms() {
         return userPendingFilms;
     }
 

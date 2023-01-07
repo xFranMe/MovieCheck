@@ -18,7 +18,7 @@ import es.unex.moviecheck.AppContainer;
 import es.unex.moviecheck.MyApplication;
 import es.unex.moviecheck.R;
 import es.unex.moviecheck.model.User;
-import es.unex.moviecheck.viewModels.ProfileFragmentViewModel;
+import es.unex.moviecheck.viewmodels.ProfileFragmentViewModel;
 
 public class ProfileFragment extends Fragment {
     private ProfileListener profileListener;

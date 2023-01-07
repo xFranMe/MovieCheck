@@ -28,7 +28,7 @@ import es.unex.moviecheck.model.Films;
 import es.unex.moviecheck.model.Genre;
 import es.unex.moviecheck.sharedInterfaces.OnFilmsLoadedListener;
 import es.unex.moviecheck.sharedInterfaces.OnGenresLoadedListener;
-import es.unex.moviecheck.viewModels.ExploreFragmentViewModel;
+import es.unex.moviecheck.viewmodels.ExploreFragmentViewModel;
 import es.unex.moviecheck.R;
 
 public class ExploreFragment extends Fragment implements OnFilmsLoadedListener, OnGenresLoadedListener {

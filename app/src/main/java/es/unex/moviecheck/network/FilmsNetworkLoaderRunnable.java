@@ -1,14 +1,12 @@
-package es.unex.moviecheck.networkAPI;
+package es.unex.moviecheck.network;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import java.util.List;
 
-import es.unex.moviecheck.model.Genre;
-import es.unex.moviecheck.model.GenresList;
-import es.unex.moviecheck.sharedInterfaces.OnGenresLoadedListener;
+import es.unex.moviecheck.model.Films;
+import es.unex.moviecheck.model.FilmsPages;
+import es.unex.moviecheck.sharedInterfaces.OnFilmsLoadedListener;
 import es.unex.moviecheck.support.AppExecutors;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,9 +14,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class GenresNetworkLoaderRunnable implements Runnable{
+public class FilmsNetworkLoaderRunnable implements Runnable{
 
-    private final OnGenresLoadedListener onGenresLoadedListener;
+    private final OnFilmsLoadedListener onFilmsLoadedListener;
 
     // Campos necesarios para trabajar con la API
     private static final String URLBASE = "https://api.themoviedb.org";
@@ -26,8 +24,8 @@ public class GenresNetworkLoaderRunnable implements Runnable{
     private static final String LANGUAGE = "es-ES";
     private static final String TAG = "APP";
 
-    public GenresNetworkLoaderRunnable(OnGenresLoadedListener onGenresLoadedListener){
-        this.onGenresLoadedListener = onGenresLoadedListener;
+    public FilmsNetworkLoaderRunnable(OnFilmsLoadedListener onFilmsLoadedListener){
+        this.onFilmsLoadedListener = onFilmsLoadedListener;
     }
 
     @Override
@@ -36,25 +34,25 @@ public class GenresNetworkLoaderRunnable implements Runnable{
                 .baseUrl(URLBASE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         FilmAPI api = retrofit.create(FilmAPI.class);
-        Call<GenresList> call = api.getGenres(APIKEY,LANGUAGE);
+        Call<FilmsPages> call = api.getFilms(APIKEY,LANGUAGE);
 
-        call.enqueue(new Callback<GenresList>() {
+        call.enqueue(new Callback<FilmsPages>() {
             @Override
-            public void onResponse(@NonNull Call<GenresList> call, @NonNull Response<GenresList> response) {
+            public void onResponse(Call<FilmsPages> call, Response<FilmsPages> response) {
                 if(!response.isSuccessful()){
                     Log.i(TAG,"CODE: "+response.code());
                 }
 
                 assert response.body() != null;
-                List<Genre> genres = response.body().getGenres();
-                AppExecutors.getInstance().mainThread().execute(() -> onGenresLoadedListener.onGenresLoaded(genres));
+                List<Films> films = response.body().getResults();
+                AppExecutors.getInstance().mainThread().execute(() -> onFilmsLoadedListener.onFilmsLoaded(films));
             }
 
             @Override
-            public void onFailure(@NonNull Call<GenresList> call, @NonNull Throwable t) {
-
+            public void onFailure(Call<FilmsPages> call, Throwable t) {
+                Log.i(TAG,"ERROR: LA APLICACIÓN FALLÓ AL REALIZAR LA CONSULTA");
+                t.printStackTrace();
             }
         });
     }

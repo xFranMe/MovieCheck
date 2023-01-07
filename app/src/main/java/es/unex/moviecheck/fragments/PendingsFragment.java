@@ -17,7 +17,7 @@ import es.unex.moviecheck.AppContainer;
 import es.unex.moviecheck.MyApplication;
 import es.unex.moviecheck.R;
 import es.unex.moviecheck.adapters.FilmListAdapter;
-import es.unex.moviecheck.viewModels.PendingsFragmentViewModel;
+import es.unex.moviecheck.viewmodels.PendingsFragmentViewModel;
 
 public class PendingsFragment extends Fragment {
 

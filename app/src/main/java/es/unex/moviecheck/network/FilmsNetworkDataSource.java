@@ -1,4 +1,4 @@
-package es.unex.moviecheck.networkAPI;
+package es.unex.moviecheck.network;
 
 import android.util.Log;
 
@@ -23,7 +23,7 @@ public class FilmsNetworkDataSource {
         downloadedGenres = new MutableLiveData<>();
     }
 
-    public synchronized static FilmsNetworkDataSource getInstance() {
+    public static synchronized FilmsNetworkDataSource getInstance() {
         Log.d(LOG_TAG, "Obteniendo la fuente de datos de red");
         if (sInstance == null) {
             sInstance = new FilmsNetworkDataSource();

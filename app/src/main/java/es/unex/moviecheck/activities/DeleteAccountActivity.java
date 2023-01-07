@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import es.unex.moviecheck.AppContainer;
 import es.unex.moviecheck.MyApplication;
-import es.unex.moviecheck.viewModels.DeleteAccountActivityViewModel;
+import es.unex.moviecheck.viewmodels.DeleteAccountActivityViewModel;
 import es.unex.moviecheck.R;
 
 public class DeleteAccountActivity extends AppCompatActivity {

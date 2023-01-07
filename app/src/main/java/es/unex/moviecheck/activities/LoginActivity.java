@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import es.unex.moviecheck.AppContainer;
 import es.unex.moviecheck.MyApplication;
-import es.unex.moviecheck.viewModels.LoginActivityViewModel;
+import es.unex.moviecheck.viewmodels.LoginActivityViewModel;
 import es.unex.moviecheck.R;
 
 public class LoginActivity extends AppCompatActivity {

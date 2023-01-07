@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import es.unex.moviecheck.AppContainer;
 import es.unex.moviecheck.MyApplication;
 import es.unex.moviecheck.adapters.FilmListAdapter;
-import es.unex.moviecheck.viewModels.FavoritesFragmentViewModel;
+import es.unex.moviecheck.viewmodels.FavoritesFragmentViewModel;
 import es.unex.moviecheck.R;
 
 public class FavoritesFragment extends Fragment {
@@ -29,6 +29,7 @@ public class FavoritesFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

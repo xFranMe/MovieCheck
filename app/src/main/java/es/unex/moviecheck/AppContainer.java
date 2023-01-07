@@ -2,11 +2,11 @@ package es.unex.moviecheck;
 
 import android.content.Context;
 
-import es.unex.moviecheck.networkAPI.FilmsNetworkDataSource;
+import es.unex.moviecheck.network.FilmsNetworkDataSource;
 import es.unex.moviecheck.repository.Repository;
 import es.unex.moviecheck.repository.UsersRepository;
 import es.unex.moviecheck.room.FilmsDatabase;
-import es.unex.moviecheck.viewModels.ViewModelFactory;
+import es.unex.moviecheck.viewmodels.ViewModelFactory;
 
 public class AppContainer {
     private final FilmsDatabase filmsDatabase;

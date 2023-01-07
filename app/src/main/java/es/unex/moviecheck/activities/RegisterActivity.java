@@ -13,7 +13,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import es.unex.moviecheck.AppContainer;
 import es.unex.moviecheck.MyApplication;
-import es.unex.moviecheck.viewModels.RegisterActivityViewModel;
+import es.unex.moviecheck.viewmodels.RegisterActivityViewModel;
 import es.unex.moviecheck.R;
 
 public class RegisterActivity extends AppCompatActivity {

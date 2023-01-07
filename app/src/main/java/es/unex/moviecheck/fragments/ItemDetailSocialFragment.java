@@ -34,7 +34,7 @@ import es.unex.moviecheck.adapters.CommentAdapter;
 import es.unex.moviecheck.model.Comments;
 import es.unex.moviecheck.model.Films;
 import es.unex.moviecheck.sharedInterfaces.ItemDetailInterface;
-import es.unex.moviecheck.viewModels.ItemDetailSocialFragmentViewModel;
+import es.unex.moviecheck.viewmodels.ItemDetailSocialFragmentViewModel;
 
 public class ItemDetailSocialFragment extends Fragment  {
 
