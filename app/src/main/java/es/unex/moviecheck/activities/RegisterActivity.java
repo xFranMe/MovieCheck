@@ -40,13 +40,10 @@ public class RegisterActivity extends AppCompatActivity {
         AppContainer appContainer = ((MyApplication) getApplication()).appContainer;
         registerActivityViewModel = new ViewModelProvider(this, (ViewModelProvider.Factory) appContainer.factory).get(RegisterActivityViewModel.class);
 
-        bRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Se procede a registrar al usuario
-                bRegister.setEnabled(false);
-                registerUserIfValid(view);
-            }
+        bRegister.setOnClickListener(view -> {
+            // Se procede a registrar al usuario
+            bRegister.setEnabled(false);
+            registerUserIfValid(view);
         });
     }
 

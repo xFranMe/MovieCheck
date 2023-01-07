@@ -14,12 +14,6 @@ import es.unex.moviecheck.model.Comments;
 @Dao
 public interface CommentDAO {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insertAllComment(List<Comments> commentsList);
-
-    @Query("DELETE FROM Comments WHERE filmID = (:filmID) AND username = (:username)")
-    void deleteCommentsUserFilm(int filmID, String username);
-
     @Query("SELECT * FROM Comments WHERE filmID = (:filmID)")
     LiveData<List<Comments>> getFilmComments(int filmID);
 

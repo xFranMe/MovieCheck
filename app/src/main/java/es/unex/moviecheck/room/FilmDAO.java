@@ -31,9 +31,6 @@ public interface FilmDAO {
     @Query("SELECT * FROM Films WHERE filmID = (:filmid)")
     Films getFilm(int filmid);
 
-    @Query("SELECT * FROM Films WHERE filmID IN (:filmids)")
-    List<Films> getFilmsByID(List<Integer> filmids);
-
     @Query("SELECT * FROM Films")
     LiveData<List<Films>> getAllFilms();
 

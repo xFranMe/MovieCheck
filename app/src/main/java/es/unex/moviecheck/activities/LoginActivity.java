@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,12 +55,9 @@ public class LoginActivity extends AppCompatActivity {
         getViewsReferences();
 
         // Se presiona sobre la cadena de Registro
-        tvRegisterLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Se inicia la actividad de RegisterActivity esperando que devuelva como resultado el nombre de usuario que se haya registrado
-                startRegisterActivityForResult();
-            }
+        tvRegisterLogin.setOnClickListener(view -> {
+            // Se inicia la actividad de RegisterActivity esperando que devuelva como resultado el nombre de usuario que se haya registrado
+            startRegisterActivityForResult();
         });
 
         // Se hace click al botón de Inicio de sesión
@@ -118,16 +113,13 @@ public class LoginActivity extends AppCompatActivity {
      */
     ActivityResultLauncher<Intent> registerLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK) {
-                        assert result.getData() != null;
-                        String username = result.getData().getExtras().get("USERNAME").toString();
-                        saveUserPreferences(username);
-                        Toast.makeText(LoginActivity.this, getString(R.string.auto_login) + " " + username, Toast.LENGTH_SHORT).show();
-                        startHomeActivity();
-                    }
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    assert result.getData() != null;
+                    String username = result.getData().getExtras().get("USERNAME").toString();
+                    saveUserPreferences(username);
+                    Toast.makeText(LoginActivity.this, getString(R.string.auto_login) + " " + username, Toast.LENGTH_SHORT).show();
+                    startHomeActivity();
                 }
             });
 

@@ -12,7 +12,7 @@ import es.unex.moviecheck.model.User;
 import es.unex.moviecheck.repository.UsersRepository;
 
 /**
- * {@link ViewModel} for {@link es.unex.prototipoasee.activities.RegisterActivity}
+ * {@link ViewModel} for {@link es.unex.moviecheck.activities.RegisterActivity}
  */
 public class RegisterActivityViewModel extends ViewModel {
     private final UsersRepository usersRepository;

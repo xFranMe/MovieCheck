@@ -56,12 +56,7 @@ public class PendingsFragment extends Fragment {
     @Override
     public void onResume() {
         Log.i("PRUEBA", "En onResume()");
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                filmListAdapter.swap(new ArrayList<>(pendingsFragmentViewModel.getUserPendingFilms()));
-            }
-        });
+        getActivity().runOnUiThread(() -> filmListAdapter.swap(new ArrayList<>(pendingsFragmentViewModel.getUserPendingFilms())));
         super.onResume();
     }
 }

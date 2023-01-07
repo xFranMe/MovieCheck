@@ -10,8 +10,7 @@ public class FilmsGenresList {
     @ColumnInfo(name="genreID")
     private int genreID;
 
-    public FilmsGenresList() {
-    }
+    public FilmsGenresList(){}
 
     // Constructor parametrizado para los test
     public FilmsGenresList(int filmid, int genreid) {

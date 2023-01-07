@@ -2,6 +2,8 @@ package es.unex.moviecheck.networkAPI;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 import es.unex.moviecheck.model.Genre;
@@ -40,23 +42,18 @@ public class GenresNetworkLoaderRunnable implements Runnable{
 
         call.enqueue(new Callback<GenresList>() {
             @Override
-            public void onResponse(Call<GenresList> call, Response<GenresList> response) {
+            public void onResponse(@NonNull Call<GenresList> call, @NonNull Response<GenresList> response) {
                 if(!response.isSuccessful()){
                     Log.i(TAG,"CODE: "+response.code());
                 }
 
                 assert response.body() != null;
                 List<Genre> genres = response.body().getGenres();
-                AppExecutors.getInstance().mainThread().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        onGenresLoadedListener.onGenresLoaded(genres);
-                    }
-                });
+                AppExecutors.getInstance().mainThread().execute(() -> onGenresLoadedListener.onGenresLoaded(genres));
             }
 
             @Override
-            public void onFailure(Call<GenresList> call, Throwable t) {
+            public void onFailure(@NonNull Call<GenresList> call, @NonNull Throwable t) {
 
             }
         });

@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,8 +32,6 @@ import es.unex.moviecheck.databinding.ActivityMainBinding;
 
 public class HomeActivity extends AppCompatActivity implements ProfileFragment.ProfileListener, FilmAdapter.FilmListener, FilmListAdapter.ActionButtonListener {
 
-    private ActivityMainBinding binding;
-
     // Referencia al ViewModel
     HomeActivityViewModel homeActivityViewModel;
 
@@ -49,7 +45,7 @@ public class HomeActivity extends AppCompatActivity implements ProfileFragment.P
 
         homeActivityViewModel.getUserFilmData(getSharedPreferences(getPackageName()+"_preferences", Context.MODE_PRIVATE).getString("USERNAME", ""));
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //Passing each menu ID as a set of Ids because each
@@ -139,14 +135,11 @@ public class HomeActivity extends AppCompatActivity implements ProfileFragment.P
      */
     ActivityResultLauncher<Intent> deleteAccountLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == RESULT_OK) {
-                        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             });
 
@@ -164,22 +157,12 @@ public class HomeActivity extends AppCompatActivity implements ProfileFragment.P
     @Override
     public void onFavButtonPressed(Films film, FilmListAdapter filmListAdapter) {
         homeActivityViewModel.removeUserFavoriteFilm(film);
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                filmListAdapter.swap(new ArrayList<>(homeActivityViewModel.getUserFavoriteFilms()));
-            }
-        });
+        runOnUiThread(() -> filmListAdapter.swap(new ArrayList<>(homeActivityViewModel.getUserFavoriteFilms())));
     }
 
     @Override
     public void onPendingButtonPressed(Films film, FilmListAdapter filmListAdapter) {
         homeActivityViewModel.removeUserPendingFilm(film);
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                filmListAdapter.swap(new ArrayList<>(homeActivityViewModel.getUserPendingFilms()));
-            }
-        });
+        runOnUiThread(() -> filmListAdapter.swap(new ArrayList<>(homeActivityViewModel.getUserPendingFilms())));
     }
 }

@@ -69,34 +69,28 @@ public class ItemDetailInfoFragment extends Fragment {
         updateUI();
 
         // Cuando se presiona en el botón de añadir/quitar de favoritos
-        bToggleFavoriteDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(itemDetailInfoFragmentViewModel.filmInFavorites(film)){
-                    itemDetailInfoFragmentViewModel.removeFavoriteFilm(film);
-                    setFavButtonAdd();
-                    Toast.makeText(getActivity(), R.string.toggle_favorites_remove, Toast.LENGTH_SHORT).show();
-                } else {
-                    itemDetailInfoFragmentViewModel.addFavoriteFilm(film);
-                    setFavButtonRemove();
-                    Toast.makeText(getActivity(), R.string.toggle_favorites_add, Toast.LENGTH_SHORT).show();
-                }
+        bToggleFavoriteDetail.setOnClickListener(view1 -> {
+            if(itemDetailInfoFragmentViewModel.filmInFavorites(film)){
+                itemDetailInfoFragmentViewModel.removeFavoriteFilm(film);
+                setFavButtonAdd();
+                Toast.makeText(getActivity(), R.string.toggle_favorites_remove, Toast.LENGTH_SHORT).show();
+            } else {
+                itemDetailInfoFragmentViewModel.addFavoriteFilm(film);
+                setFavButtonRemove();
+                Toast.makeText(getActivity(), R.string.toggle_favorites_add, Toast.LENGTH_SHORT).show();
             }
         });
 
         // Cuando se presiona en el botón de añadir/quitar de pendientes
-        bTogglePendingDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(itemDetailInfoFragmentViewModel.filmInPendings(film)){
-                    itemDetailInfoFragmentViewModel.removePendingFilm(film);
-                    setPendingButtonAdd();
-                    Toast.makeText(getActivity(), R.string.toggle_pending_remove, Toast.LENGTH_SHORT).show();
-                } else {
-                    itemDetailInfoFragmentViewModel.addPendingFilm(film);
-                    setPendingButtonRemove();
-                    Toast.makeText(getActivity(), R.string.toggle_pending_add, Toast.LENGTH_SHORT).show();
-                }
+        bTogglePendingDetail.setOnClickListener(view12 -> {
+            if(itemDetailInfoFragmentViewModel.filmInPendings(film)){
+                itemDetailInfoFragmentViewModel.removePendingFilm(film);
+                setPendingButtonAdd();
+                Toast.makeText(getActivity(), R.string.toggle_pending_remove, Toast.LENGTH_SHORT).show();
+            } else {
+                itemDetailInfoFragmentViewModel.addPendingFilm(film);
+                setPendingButtonRemove();
+                Toast.makeText(getActivity(), R.string.toggle_pending_add, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -123,32 +117,29 @@ public class ItemDetailInfoFragment extends Fragment {
      * Actualiza todas las vistas incluidas en este fragmento que reflejan información sobre la película
      */
     private void updateUI(){
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                if(itemDetailInfoFragmentViewModel.filmInFavorites(film)){
-                    setFavButtonRemove();
-                } else {
-                    setFavButtonAdd();
-                }
-                if(itemDetailInfoFragmentViewModel.filmInPendings(film)){
-                    setPendingButtonRemove();
-                } else {
-                    setPendingButtonAdd();
-                }
-                Glide.with(getContext()).load("https://image.tmdb.org/t/p/original/"+film.getPosterPath()).into(ivMoviePosterDetail);
-                tvMovieTitleDetail.setText(film.getTitle());
-                tvReleaseDateValueDetail.setText(film.getReleaseDate());
-                tvRatingAPIDetail.setText(String.valueOf(film.getVoteAverage()));
-                tvSynopsisValueDetail.setText(film.getOverview());
-                if(film.getTotalVotesMovieCheck()!=0){
-                    tvRatingValueDetail.setText(String.valueOf(film.getTotalRatingMovieCheck()/film.getTotalVotesMovieCheck()));
-                }else{
-                    tvRatingValueDetail.setText(String.valueOf(0));
-                }
-                String genresAsString = String.join(" - ", itemDetailInfoFragmentViewModel.getFilmGenres(film));
-                tvMovieGenresValue.setText(genresAsString);
+        getActivity().runOnUiThread(() -> {
+            if(itemDetailInfoFragmentViewModel.filmInFavorites(film)){
+                setFavButtonRemove();
+            } else {
+                setFavButtonAdd();
             }
+            if(itemDetailInfoFragmentViewModel.filmInPendings(film)){
+                setPendingButtonRemove();
+            } else {
+                setPendingButtonAdd();
+            }
+            Glide.with(getContext()).load("https://image.tmdb.org/t/p/original/"+film.getPosterPath()).into(ivMoviePosterDetail);
+            tvMovieTitleDetail.setText(film.getTitle());
+            tvReleaseDateValueDetail.setText(film.getReleaseDate());
+            tvRatingAPIDetail.setText(String.valueOf(film.getVoteAverage()));
+            tvSynopsisValueDetail.setText(film.getOverview());
+            if(film.getTotalVotesMovieCheck()!=0){
+                tvRatingValueDetail.setText(String.valueOf(film.getTotalRatingMovieCheck()/film.getTotalVotesMovieCheck()));
+            }else{
+                tvRatingValueDetail.setText(String.valueOf(0));
+            }
+            String genresAsString = String.join(" - ", itemDetailInfoFragmentViewModel.getFilmGenres(film));
+            tvMovieGenresValue.setText(genresAsString);
         });
     }
 

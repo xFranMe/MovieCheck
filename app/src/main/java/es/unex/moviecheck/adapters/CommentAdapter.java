@@ -40,12 +40,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.commentA
         holder.user.setText(commentList.get(position).getUsername());
         holder.text.setText(commentList.get(position).getText());
         if (commentList.get(position).getUsername().equals(userLogged)){
-            holder.deleteCommentButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    deleteCommentInterface.deleteComment(commentList.get(position));
-                }
-            });
+            holder.deleteCommentButton.setOnClickListener(view -> deleteCommentInterface.deleteComment(commentList.get(position)));
         } else {
             holder.deleteCommentButton.setEnabled(false);
             holder.deleteCommentButton.setVisibility(View.INVISIBLE);

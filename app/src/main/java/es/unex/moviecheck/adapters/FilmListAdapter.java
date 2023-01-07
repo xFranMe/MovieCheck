@@ -50,24 +50,16 @@ public class FilmListAdapter extends RecyclerView.Adapter<FilmListAdapter.FilmsL
         holder.title.setText(filmList.get(position).getTitle());
         Glide.with(holder.image.getContext()).load("https://image.tmdb.org/t/p/original/"+filmList.get(position).getPosterPath()).into(holder.image);
         holder.date.setText(filmList.get(position).getReleaseDate().split("-")[0]);
-        holder.actionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(listItemLayout == R.layout.favorites_item_list_content){
-                    actionButtonListener.onFavButtonPressed(filmList.get(position), FilmListAdapter.this);
-                    Toast.makeText(view.getContext(), R.string.toggle_favorites_remove, Toast.LENGTH_SHORT).show();
-                } else {
-                    actionButtonListener.onPendingButtonPressed(filmList.get(position), FilmListAdapter.this);
-                    Toast.makeText(view.getContext(), R.string.toggle_pending_remove, Toast.LENGTH_SHORT).show();
-                }
+        holder.actionButton.setOnClickListener(view -> {
+            if(listItemLayout == R.layout.favorites_item_list_content){
+                actionButtonListener.onFavButtonPressed(filmList.get(position), FilmListAdapter.this);
+                Toast.makeText(view.getContext(), R.string.toggle_favorites_remove, Toast.LENGTH_SHORT).show();
+            } else {
+                actionButtonListener.onPendingButtonPressed(filmList.get(position), FilmListAdapter.this);
+                Toast.makeText(view.getContext(), R.string.toggle_pending_remove, Toast.LENGTH_SHORT).show();
             }
         });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                filmListener.onFilmSelected(filmList.get(position));
-            }
-        });
+        holder.itemView.setOnClickListener(view -> filmListener.onFilmSelected(filmList.get(position)));
     }
 
     @Override

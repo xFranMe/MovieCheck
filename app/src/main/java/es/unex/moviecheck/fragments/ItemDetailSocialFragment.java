@@ -1,7 +1,9 @@
 package es.unex.moviecheck.fragments;
 
+import static android.view.View.INVISIBLE;
 import static java.lang.Math.round;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -80,9 +82,7 @@ public class ItemDetailSocialFragment extends Fragment  {
         itemDetailSocialFragmentViewModel.changeFilm(film);
 
         // Se obtienen los datos y los comentarios más recientes de la película
-        itemDetailSocialFragmentViewModel.getComments().observe(getActivity(), comments->{
-            commentAdapter.swap(comments);
-        });
+        itemDetailSocialFragmentViewModel.getComments().observe(getActivity(), comments -> commentAdapter.swap(comments));
 
         getViewsReferences(v);
         npAddRating.setMinValue(1);
@@ -90,26 +90,20 @@ public class ItemDetailSocialFragment extends Fragment  {
 
         updateUI();
 
-        bAddRating.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(itemDetailSocialFragmentViewModel.filmNotRated(film)){
-                    addRating(npAddRating.getValue());
-                }
+        bAddRating.setOnClickListener(view -> {
+            if(itemDetailSocialFragmentViewModel.filmNotRated(film)){
+                addRating(npAddRating.getValue());
             }
         });
 
-        ibSendComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String commentBody = etCommentSocial.getText().toString();
-                if (!commentBody.equals("")) {
-                    addComment(commentBody);
-                    etCommentSocial.setText("");
-                } else {
-                    Snackbar.make(view, R.string.empty_comment, 2500)
-                            .show();
-                }
+        ibSendComment.setOnClickListener(view -> {
+            String commentBody = etCommentSocial.getText().toString();
+            if (!commentBody.equals("")) {
+                addComment(commentBody);
+                etCommentSocial.setText("");
+            } else {
+                Snackbar.make(view, R.string.empty_comment, 2500)
+                        .show();
             }
         });
         return v;
@@ -131,14 +125,11 @@ public class ItemDetailSocialFragment extends Fragment  {
     }
 
     private void updateUI() {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                tvMovieTitle.setText(film.getTitle());
-                tvMovieDate.setText(film.getReleaseDate().split("-")[0]);
-                updateRating();
-                Glide.with(getContext()).load("https://image.tmdb.org/t/p/original/" + film.getPosterPath()).into(ivMoviePoster);
-            }
+        getActivity().runOnUiThread(() -> {
+            tvMovieTitle.setText(film.getTitle());
+            tvMovieDate.setText(film.getReleaseDate().split("-")[0]);
+            updateRating();
+            Glide.with(getContext()).load("https://image.tmdb.org/t/p/original/" + film.getPosterPath()).into(ivMoviePoster);
         });
     }
 
@@ -147,6 +138,7 @@ public class ItemDetailSocialFragment extends Fragment  {
         itemDetailSocialFragmentViewModel.addComment(comment);
     }
 
+    @SuppressLint("SetTextI18n")
     private void addRating(int rating){
 
         itemDetailSocialFragmentViewModel.addRating(film, rating);
@@ -154,19 +146,17 @@ public class ItemDetailSocialFragment extends Fragment  {
         film.setTotalVotesMovieCheck(film.getTotalVotesMovieCheck()+1);
         film.setTotalRatingMovieCheck(film.getTotalRatingMovieCheck()+rating);
 
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                tvRatingSocial.setText(Double.toString((double) film.getTotalRatingMovieCheck()/film.getTotalVotesMovieCheck()));
-                npAddRating.setEnabled(false);
-                npAddRating.setVisibility(getView().INVISIBLE);
-                bAddRating.setEnabled(false);
-                bAddRating.setVisibility(getView().INVISIBLE);
-                tvRatingSocial.setText(Double.toString(round((double) film.getTotalRatingMovieCheck()/film.getTotalVotesMovieCheck())));
-            }
+        getActivity().runOnUiThread(() -> {
+            tvRatingSocial.setText(Double.toString((double) film.getTotalRatingMovieCheck()/film.getTotalVotesMovieCheck()));
+            npAddRating.setEnabled(false);
+            npAddRating.setVisibility(INVISIBLE);
+            bAddRating.setEnabled(false);
+            bAddRating.setVisibility(INVISIBLE);
+            tvRatingSocial.setText(Double.toString(round((double) film.getTotalRatingMovieCheck()/film.getTotalVotesMovieCheck())));
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateRating(){
         if(film.getTotalVotesMovieCheck()!=0){
             tvRatingSocial.setText(Double.toString(round((double) film.getTotalRatingMovieCheck()/film.getTotalVotesMovieCheck())));
@@ -175,9 +165,9 @@ public class ItemDetailSocialFragment extends Fragment  {
         }
         if (!itemDetailSocialFragmentViewModel.filmNotRated(film)){
             npAddRating.setEnabled(false);
-            npAddRating.setVisibility(getView().INVISIBLE);
+            npAddRating.setVisibility(INVISIBLE);
             bAddRating.setEnabled(false);
-            bAddRating.setVisibility(getView().INVISIBLE);
+            bAddRating.setVisibility(INVISIBLE);
         }
     }
 

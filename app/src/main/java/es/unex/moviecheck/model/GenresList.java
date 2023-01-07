@@ -10,9 +10,7 @@ public class GenresList {
 
     @SerializedName("genres")
     @Expose
-    private List<Genre> genres = null;
-
-    public GenresList(){}
+    private List<Genre> genres;
 
     public GenresList(List<Genre> list){
         genres = list;

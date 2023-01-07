@@ -9,8 +9,8 @@ import es.unex.moviecheck.room.FilmsDatabase;
 import es.unex.moviecheck.viewModels.ViewModelFactory;
 
 public class AppContainer {
-    private FilmsDatabase filmsDatabase;
-    private FilmsNetworkDataSource filmsNetworkDataSource;
+    private final FilmsDatabase filmsDatabase;
+    private final FilmsNetworkDataSource filmsNetworkDataSource;
     public UsersRepository usersRepository;
     public Repository repository;
     public ViewModelFactory factory;

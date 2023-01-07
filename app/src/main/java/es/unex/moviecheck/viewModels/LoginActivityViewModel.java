@@ -6,7 +6,7 @@ import es.unex.moviecheck.model.User;
 import es.unex.moviecheck.repository.UsersRepository;
 
 /**
- * {@link ViewModel} for {@link es.unex.prototipoasee.activities.LoginActivity}
+ * {@link ViewModel} for {@link es.unex.moviecheck.activities.LoginActivity}
  */
 public class LoginActivityViewModel extends ViewModel {
 

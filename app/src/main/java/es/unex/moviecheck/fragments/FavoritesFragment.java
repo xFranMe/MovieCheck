@@ -53,12 +53,7 @@ public class FavoritesFragment extends Fragment {
 
     @Override
     public void onResume() {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                filmListAdapter.swap(new ArrayList<>(favoritesFragmentViewModel.getUserFavoritesFilms()));
-            }
-        });
+        getActivity().runOnUiThread(() -> filmListAdapter.swap(new ArrayList<>(favoritesFragmentViewModel.getUserFavoritesFilms())));
         super.onResume();
     }
 }

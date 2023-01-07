@@ -21,8 +21,8 @@ public class UsersRepository {
     private final AppExecutors mExecutors = AppExecutors.getInstance();
 
     // Mapas para guardar los usuarios almacenados en la BD para el chequeo de credenciales
-    private HashMap<String, User> usersInDBByUsername = new HashMap<>();
-    private HashMap<String, User> usersInDBByEmail = new HashMap<>();
+    private final HashMap<String, User> usersInDBByUsername = new HashMap<>();
+    private final HashMap<String, User> usersInDBByEmail = new HashMap<>();
 
     private UsersRepository(UserDAO userDAO) {
         this.userDAO = userDAO;
@@ -40,7 +40,7 @@ public class UsersRepository {
         return sInstance;
     }
 
-    /**
+    /*
      * Operaciones relacionadas con la gestión de usuarios.
      * En la instanciación del repositorio se obtienen los usuarios ya registrados.
      * Estos usuarios se vuelcan en dos HashMaps para realizar las tareas de consulta de forma mucho más eficiente.
@@ -52,14 +52,11 @@ public class UsersRepository {
      * Recupera todos los usuarios almacenados en la BD y los carga en los HashMap de consulta
      */
     public void getAllUsers() {
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                List<User> users = userDAO.getAllUsers();
-                for (User user: users) {
-                    usersInDBByUsername.put(user.getUsername(), user);
-                    usersInDBByEmail.put(user.getEmail(), user);
-                }
+        AppExecutors.getInstance().diskIO().execute(() -> {
+            List<User> users = userDAO.getAllUsers();
+            for (User user: users) {
+                usersInDBByUsername.put(user.getUsername(), user);
+                usersInDBByEmail.put(user.getEmail(), user);
             }
         });
     }
@@ -87,12 +84,7 @@ public class UsersRepository {
     public void registerNewUser(User user) {
         usersInDBByUsername.put(user.getUsername(), user);
         usersInDBByEmail.put(user.getEmail(), user);
-        mExecutors.diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                userDAO.insertUser(user);
-            }
-        });
+        mExecutors.diskIO().execute(() -> userDAO.insertUser(user));
     }
 
     /**
@@ -100,14 +92,11 @@ public class UsersRepository {
      * @param username Nombre del usuario que se desea eliminar
      */
     public void deleteUser(String username) {
-        mExecutors.diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                User user = userDAO.getUser(username);
-                usersInDBByUsername.remove(username);
-                usersInDBByEmail.remove(user.getEmail());
-                userDAO.deleteUserByID(username);
-            }
+        mExecutors.diskIO().execute(() -> {
+            User user = userDAO.getUser(username);
+            usersInDBByUsername.remove(username);
+            usersInDBByEmail.remove(user.getEmail());
+            userDAO.deleteUserByID(username);
         });
     }
 

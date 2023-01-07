@@ -10,7 +10,6 @@ import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -62,30 +61,10 @@ public class ExploreFragment extends Fragment implements OnFilmsLoadedListener, 
         AppContainer appContainer = ((MyApplication) getActivity().getApplication()).appContainer;
         exploreFragmentViewModel = new ViewModelProvider(this, (ViewModelProvider.Factory) appContainer.factory).get(ExploreFragmentViewModel.class);
 
-        exploreFragmentViewModel.getFilms().observe(getActivity(), new Observer<List<Films>>() {
-            @Override
-            public void onChanged(List<Films> films) {
-                onFilmsLoaded(films);
-            }
-        });
-        exploreFragmentViewModel.getGenres().observe(getActivity(), new Observer<List<Genre>>() {
-            @Override
-            public void onChanged(List<Genre> genres) {
-                onGenresLoaded(genres);
-            }
-        });
-        exploreFragmentViewModel.getFilmsByGenre().observe(getActivity(), new Observer<List<Films>>() {
-            @Override
-            public void onChanged(List<Films> films) {
-                onFilmsLoaded(films);
-            }
-        });
-        exploreFragmentViewModel.getTitleFilterLiveData().observe(getActivity(), new Observer<List<Films>>() {
-            @Override
-            public void onChanged(List<Films> films) {
-                onFilmsLoaded(films);
-            }
-        });
+        exploreFragmentViewModel.getFilms().observe(getActivity(), this::onFilmsLoaded);
+        exploreFragmentViewModel.getGenres().observe(getActivity(), this::onGenresLoaded);
+        exploreFragmentViewModel.getFilmsByGenre().observe(getActivity(), this::onFilmsLoaded);
+        exploreFragmentViewModel.getTitleFilterLiveData().observe(getActivity(), this::onFilmsLoaded);
 
         svSearchFilm.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -100,12 +79,7 @@ public class ExploreFragment extends Fragment implements OnFilmsLoadedListener, 
             }
         });
 
-        ibResetFilms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                exploreFragmentViewModel.forceFetchFilmAndGenres();
-            }
-        });
+        ibResetFilms.setOnClickListener(view1 -> exploreFragmentViewModel.forceFetchFilmAndGenres());
 
         return view;
     }
@@ -123,12 +97,7 @@ public class ExploreFragment extends Fragment implements OnFilmsLoadedListener, 
             chip.setChipBackgroundColorResource(R.color.gray);
             chip.setCloseIconVisible(false);
             cgGenreFilter.addView(chip);
-            chip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    loadGenreFilms(genre.getId());
-                }
-            });
+            chip.setOnClickListener(view -> loadGenreFilms(genre.getId()));
         }
     }
 

@@ -50,24 +50,13 @@ public class ProfileFragment extends Fragment {
         updateUI();
 
         // Se hace click en el botón para mostrar la información de la App
-        ibAppInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                profileListener.onInfoButtonPressed();
-            }
-        });
+        ibAppInfo.setOnClickListener(view -> profileListener.onInfoButtonPressed());
 
         // Se hace click en el botón para Cerrar sesión
-        bLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) { logOut(); }
-        });
+        bLogOut.setOnClickListener(view -> logOut());
 
         // Se hace click en el botón para Eliminar cuenta
-        bDeleteAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {profileListener.onDeleteAccountButtonPressed();}
-        });
+        bDeleteAccount.setOnClickListener(view -> profileListener.onDeleteAccountButtonPressed());
 
         return v;
     }
@@ -106,13 +95,10 @@ public class ProfileFragment extends Fragment {
     private void updateUI(){
         loginPreferences = getActivity().getSharedPreferences(getActivity().getPackageName()+"_preferences", Context.MODE_PRIVATE);
         User user = profileFragmentViewModel.getUser(loginPreferences.getString("USERNAME", ""));
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                tvUsernameValueProfile.setText(user.getUsername());
-                tvEmailValueProfile.setText(user.getEmail());
-                tvPasswordValueProfile.setText(user.getPassword());
-            }
+        getActivity().runOnUiThread(() -> {
+            tvUsernameValueProfile.setText(user.getUsername());
+            tvEmailValueProfile.setText(user.getEmail());
+            tvPasswordValueProfile.setText(user.getPassword());
         });
     }
 

@@ -18,9 +18,7 @@ public class FilmsPages {
     private Integer totalPages;
     @SerializedName("results")
     @Expose
-    private List<Films> results = null;
-
-    public FilmsPages(){}
+    private List<Films> results;
 
     public FilmsPages(Integer numpage, Integer numresults, Integer pages, List<Films> list) {
         page = numpage;
