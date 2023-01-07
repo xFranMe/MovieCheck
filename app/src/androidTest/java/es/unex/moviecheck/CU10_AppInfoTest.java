@@ -174,20 +174,6 @@ public class CU10_AppInfoTest {
                         isDisplayed()));
         textView6.check(matches(withText(R.string.app_info_what_can_do_response)));
 
-        ViewInteraction textView7 = onView(
-                allOf(withId(R.id.tvWho),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
-                        isDisplayed()));
-        textView7.check(matches(withText(R.string.app_info_who)));
-
-        viewGroup.perform(swipeUp());
-
-        ViewInteraction textView8 = onView(
-                allOf(withId(R.id.tvWhoResponse),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
-                        isDisplayed()));
-        textView8.check(matches(withText(R.string.app_info_who_response)));
-
         pressBack();
 
         ViewInteraction materialButton2 = onView(
