@@ -309,6 +309,7 @@ public class Repository {
                 lock.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
             return mFilm;
         }
@@ -318,7 +319,7 @@ public class Repository {
         mExecutors.diskIO().execute(() -> {
             synchronized (lock) {
                 genreList = filmsGenresListDAO.getAllFilmsGenresNames(film.getId());
-                lock.notify();
+                lock.notifyAll();
             }
         });
         synchronized (lock) {
@@ -326,6 +327,7 @@ public class Repository {
                 lock.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
             return genreList;
         }
