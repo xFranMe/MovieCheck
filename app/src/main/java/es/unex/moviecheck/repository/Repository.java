@@ -308,7 +308,6 @@ public class Repository {
             try {
                 lock.wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
                 Thread.currentThread().interrupt();
             }
             return mFilm;
@@ -326,7 +325,6 @@ public class Repository {
             try {
                 lock.wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
                 Thread.currentThread().interrupt();
             }
             return genreList;

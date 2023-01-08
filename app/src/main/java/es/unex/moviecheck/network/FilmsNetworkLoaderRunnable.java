@@ -52,7 +52,6 @@ public class FilmsNetworkLoaderRunnable implements Runnable{
             @Override
             public void onFailure(Call<FilmsPages> call, Throwable t) {
                 Log.i(TAG,"ERROR: LA APLICACIÓN FALLÓ AL REALIZAR LA CONSULTA");
-                t.printStackTrace();
             }
         });
     }

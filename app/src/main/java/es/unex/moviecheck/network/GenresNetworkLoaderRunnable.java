@@ -54,7 +54,7 @@ public class GenresNetworkLoaderRunnable implements Runnable{
 
             @Override
             public void onFailure(@NonNull Call<GenresList> call, @NonNull Throwable t) {
-
+                Log.i(TAG,"ERROR: LA APLICACIÓN FALLÓ AL REALIZAR LA CONSULTA");
             }
         });
     }
