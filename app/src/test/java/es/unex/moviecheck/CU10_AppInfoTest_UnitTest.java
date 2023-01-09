@@ -23,7 +23,7 @@ public class CU10_AppInfoTest_UnitTest {
     public void test () throws NoSuchFieldException, IllegalAccessException {
 
         int test = R.layout.class.getField("activity_app_info").getInt(null);
-        assertNotEquals(test,0);
+        assertNotEquals(0, test);
     }
 
     @Before

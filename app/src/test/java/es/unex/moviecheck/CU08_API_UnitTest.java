@@ -1,5 +1,6 @@
 package es.unex.moviecheck;
 
+import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
 
 import org.junit.Test;
@@ -60,7 +61,7 @@ public class CU08_API_UnitTest {
         Call <FilmsPages>  call = filmAPI.getFilms("key","lang");
         Response <FilmsPages> respuesta = call.execute();
 
-        assertTrue(respuesta != null);
+        assertNotNull(respuesta);
         assertTrue(respuesta.isSuccessful());
 
         //Finish web server
@@ -100,7 +101,7 @@ public class CU08_API_UnitTest {
         Response <GenresList> respuesta = call.execute();
 
         //let's check that the call is executed
-        assertTrue(respuesta != null);
+        assertNotNull(respuesta);
         assertTrue(respuesta.isSuccessful());
 
         //Finish web server

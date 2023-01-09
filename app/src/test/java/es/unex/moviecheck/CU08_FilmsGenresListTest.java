@@ -13,24 +13,24 @@ public class CU08_FilmsGenresListTest {
 
     @Test
     public void shouldGetFilmId (){
-        assertEquals(filmsGenresList.getFilmID(),1);
+        assertEquals(1, filmsGenresList.getFilmID());
     }
 
     @Test
     public void shouldGetGenreId (){
-        assertEquals(filmsGenresList.getGenreID(),1);
+        assertEquals(1, filmsGenresList.getGenreID());
     }
 
     @Test
     public void shouldSetFilmId (){
         filmsGenresList.setFilmID(2);
-        assertEquals(filmsGenresList.getFilmID(),2);
+        assertEquals(2, filmsGenresList.getFilmID());
     }
 
     @Test
     public void shouldSetGenreId (){
         filmsGenresList.setGenreID(2);
-        assertEquals(filmsGenresList.getGenreID(),2);
+        assertEquals(2, filmsGenresList.getGenreID());
     }
 
     @Before

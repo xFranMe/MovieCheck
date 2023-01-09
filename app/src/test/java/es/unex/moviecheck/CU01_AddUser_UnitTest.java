@@ -13,35 +13,35 @@ public class CU01_AddUser_UnitTest {
 
     @Test
     public void shouldGetUsername() {
-        assertEquals(user.getUsername(),"username");
+        assertEquals("username", user.getUsername());
     }
 
     @Test
     public void shouldGetEmail() {
-        assertEquals(user.getEmail(),"user@email.es");
+        assertEquals("user@email.es", user.getEmail());
     }
 
     @Test
     public void shouldGetPassword() {
-        assertEquals(user.getPassword(),"password");
+        assertEquals("password", user.getPassword());
     }
 
     @Test
     public void shouldSetUsername() {
         user.setUsername("user");
-        assertEquals(user.getUsername(),"user");
+        assertEquals("user", user.getUsername());
     }
 
     @Test
     public void shouldSetEmail() {
         user.setEmail("user@unex.es");
-        assertEquals(user.getEmail(),"user@unex.es");
+        assertEquals("user@unex.es", user.getEmail());
     }
 
     @Test
     public void shouldSetPassword() {
         user.setPassword("pass");
-        assertEquals(user.getPassword(),"pass");
+        assertEquals("pass", user.getPassword());
     }
 
     @Before

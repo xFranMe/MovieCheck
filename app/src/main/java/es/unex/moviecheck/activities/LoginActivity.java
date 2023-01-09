@@ -30,6 +30,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvRegisterLogin;
     private Button bLogin;
 
+    // Key needed for accesing SharedPreferences
+    private static final String USERNAME = "USERNAME";
+
     // Referencia al ViewModel
     LoginActivityViewModel loginActivityViewModel;
 
@@ -55,10 +58,8 @@ public class LoginActivity extends AppCompatActivity {
         getViewsReferences();
 
         // Se presiona sobre la cadena de Registro
-        tvRegisterLogin.setOnClickListener(view -> {
-            // Se inicia la actividad de RegisterActivity esperando que devuelva como resultado el nombre de usuario que se haya registrado
-            startRegisterActivityForResult();
-        });
+        // Se inicia la actividad de RegisterActivity esperando que devuelva como resultado el nombre de usuario que se haya registrado
+        tvRegisterLogin.setOnClickListener(view -> startRegisterActivityForResult());
 
         // Se hace click al botón de Inicio de sesión
         bLogin.setOnClickListener(this::logIn);
@@ -72,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         if(!loginPreferences.getString("USERNAME", "").equals("")){
             // El usuario ya se ha loggeado o registrado anteriormente en el dispositivo y aún no ha cerrado sesión
             // Inicio de sesión automático, es decir, el usuario no introduce sus credenciales y se usa el valor de la preferencia como referencia al usuario loggeado
-            Toast.makeText(this, getString(R.string.auto_login) + " " + loginPreferences.getString("USERNAME", ""), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.auto_login) + " " + loginPreferences.getString(USERNAME, ""), Toast.LENGTH_SHORT).show();
             startHomeActivity();
         }
     }
@@ -116,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
                     assert result.getData() != null;
-                    String username = result.getData().getExtras().get("USERNAME").toString();
+                    String username = result.getData().getExtras().get(USERNAME).toString();
                     saveUserPreferences(username);
                     Toast.makeText(LoginActivity.this, getString(R.string.auto_login) + " " + username, Toast.LENGTH_SHORT).show();
                     startHomeActivity();
@@ -128,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void saveUserPreferences(String username){
         SharedPreferences.Editor editPreferences = loginPreferences.edit();
-        editPreferences.putString("USERNAME", username);
+        editPreferences.putString(USERNAME, username);
         editPreferences.apply();
     }
 

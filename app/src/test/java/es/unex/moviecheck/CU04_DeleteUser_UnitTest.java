@@ -13,13 +13,13 @@ public class CU04_DeleteUser_UnitTest {
 
     @Test
     public void shouldGetUsername() {
-        assertEquals(user.getUsername(),"username");
+        assertEquals("username", user.getUsername());
     }
 
     @Test
     public void shouldSetUsername() {
         user.setUsername("user");
-        assertEquals(user.getUsername(),"user");
+        assertEquals("user", user.getUsername());
     }
 
     @Before

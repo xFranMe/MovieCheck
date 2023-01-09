@@ -12,30 +12,30 @@ public class CU06_GenreTest {
 
     @Test
     public void shouldGetId (){
-        assertEquals(genre.getId().intValue(),1);
+        assertEquals(1, genre.getId().intValue());
     }
 
     @Test
     public void shouldGetName (){
-        assertEquals(genre.getName(),"genre");
+        assertEquals("genre", genre.getName());
     }
 
     @Test
     public void shouldSetId (){
         genre.setId(2);
-        assertEquals(genre.getId().intValue(),2);
+        assertEquals(2, genre.getId().intValue());
     }
 
     @Test
     public void shouldSetName (){
         genre.setName("name");
-        assertEquals(genre.getName(),"name");
+        assertEquals("name", genre.getName());
     }
 
     @Test
     public void shouldCompareTo(){
         Genre aux = new Genre(1,"genre");
-        assertEquals(aux.compareTo(genre),0);
+        assertEquals(0, aux.compareTo(genre));
     }
 
     @Before

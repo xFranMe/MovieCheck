@@ -13,24 +13,24 @@ public class CU02_AddFavorites_UnitTest {
 
     @Test
     public void shouldGetFilmId(){
-        assertEquals(favorites.getFilmID(),1);
+        assertEquals(1, favorites.getFilmID());
     }
 
     @Test
     public void shouldGetUsername(){
-        assertEquals(favorites.getUsername(),"username");
+        assertEquals("username", favorites.getUsername());
     }
 
     @Test
     public void shouldSetFilmId(){
         favorites.setFilmID(2);
-        assertEquals(favorites.getFilmID(),2);
+        assertEquals(2, favorites.getFilmID());
     }
 
     @Test
     public void shouldSetUsername(){
         favorites.setUsername("user");
-        assertEquals(favorites.getUsername(),"user");
+        assertEquals("user", favorites.getUsername());
     }
 
     @Before

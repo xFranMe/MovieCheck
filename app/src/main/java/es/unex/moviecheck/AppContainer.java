@@ -11,9 +11,9 @@ import es.unex.moviecheck.viewmodels.ViewModelFactory;
 public class AppContainer {
     private final FilmsDatabase filmsDatabase;
     private final FilmsNetworkDataSource filmsNetworkDataSource;
-    public UsersRepository usersRepository;
-    public Repository repository;
-    public ViewModelFactory factory;
+    public final UsersRepository usersRepository;
+    public final Repository repository;
+    public final ViewModelFactory factory;
 
     public AppContainer(Context context){
         filmsDatabase = FilmsDatabase.getInstance(context);

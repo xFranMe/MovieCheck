@@ -23,10 +23,10 @@ public class CU16_FavoritePendingScreen_UnitTest {
     public void test () throws NoSuchFieldException, IllegalAccessException {
 
         int testFav = R.layout.class.getField("fragment_favorites").getInt(null);
-        assertNotEquals(testFav,0);
+        assertNotEquals(0, testFav);
 
         int testPend = R.layout.class.getField("fragment_explore").getInt(null);
-        assertNotEquals(testPend,0);
+        assertNotEquals(0, testPend);
     }
 
     @Before

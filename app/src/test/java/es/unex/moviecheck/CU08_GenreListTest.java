@@ -19,14 +19,14 @@ public class CU08_GenreListTest {
 
     @Test
     public void shouldGetGenres(){
-        assertEquals(genresList.getGenres(),list);
+        assertEquals(list, genresList.getGenres());
     }
 
     @Test
     public void shouldSetGenres(){
         List<Genre> genreslist = new ArrayList<>();
         genresList.setGenres(genreslist);
-        assertEquals(genresList.getGenres(),genreslist);
+        assertEquals(genreslist, genresList.getGenres());
     }
 
     @Before

@@ -17,179 +17,179 @@ public class CU06_FilmInfo_UnitTest {
 
     @Test
     public void shouldGetAdult (){
-        assertEquals(films.getAdult(),true);
+        assertEquals(true, films.getAdult());
     }
 
     @Test
     public void shouldGetBackdropPath (){
-        assertEquals(films.getBackdropPath(),"bk_poster");
+        assertEquals("bk_poster", films.getBackdropPath());
     }
 
     @Test
     public void shouldGetOriginalLanguage (){
-        assertEquals(films.getOriginalLanguage(),"language");
+        assertEquals("language", films.getOriginalLanguage());
     }
 
     @Test
     public void shouldGetPopularity (){
-        assertEquals(films.getPopularity(),0.0,0.00000001);
+        assertEquals(0.0, films.getPopularity(),0.00000001);
     }
 
     @Test
     public void shouldGetOriginalTitle (){
-        assertEquals(films.getOriginalTitle(),"originalTitle");
+        assertEquals("originalTitle", films.getOriginalTitle());
     }
 
     @Test
     public void shouldGetVideo (){
-        assertEquals(films.getVideo(),false);
+        assertEquals(false, films.getVideo());
     }
 
     @Test
     public void shouldGetVoteCount (){
-        assertEquals(films.getVoteCount().intValue(),0);
+        assertEquals(0, films.getVoteCount().intValue());
     }
 
     @Test
     public void shouldGetId (){
-        assertEquals(films.getId().intValue(),0);
+        assertEquals(0, films.getId().intValue());
     }
 
     @Test
     public void shouldGetTitle (){
-        assertEquals(films.getTitle(),"title");
+        assertEquals("title", films.getTitle());
     }
 
     @Test
     public void shouldGetGenresIds (){
-        assertEquals(films.getGenreIds(),genresids);
+        assertEquals(genresids, films.getGenreIds());
     }
 
     @Test
     public void shouldGetPosterPath (){
-        assertEquals(films.getPosterPath(),"poster");
+        assertEquals("poster", films.getPosterPath());
     }
 
     @Test
     public void shouldGetOverview (){
-        assertEquals(films.getOverview(),"overview");
+        assertEquals("overview", films.getOverview());
     }
 
     @Test
     public void shouldGetRealeaseDate (){
-        assertEquals(films.getReleaseDate(),"date");
+        assertEquals("date", films.getReleaseDate());
     }
 
     @Test
     public void shouldGetVoteAverage (){
-        assertEquals(films.getVoteAverage(),0.0,0.00000001);
+        assertEquals(0.0, films.getVoteAverage(),0.00000001);
     }
 
     @Test
     public void shouldGetTotalVotesMovieCheck (){
-        assertEquals(films.getTotalVotesMovieCheck().intValue(),0);
+        assertEquals(0, films.getTotalVotesMovieCheck().intValue());
     }
 
     @Test
     public void shouldGetTotalRatingMovieCheck (){
-        assertEquals(films.getTotalRatingMovieCheck().intValue(),0);
+        assertEquals(0, films.getTotalRatingMovieCheck().intValue());
     }
 
     @Test
     public void shouldSetAdult (){
         films.setAdult(false);
-        assertEquals(films.getAdult(),false);
+        assertEquals(false, films.getAdult());
     }
 
     @Test
     public void shouldSetBackdropPath (){
         films.setBackdropPath("bk_path");
-        assertEquals(films.getBackdropPath(),"bk_path");
+        assertEquals("bk_path", films.getBackdropPath());
     }
 
     @Test
     public void shouldSetOriginalLanguage (){
         films.setOriginalLanguage("og_language");
-        assertEquals(films.getOriginalLanguage(),"og_language");
+        assertEquals("og_language", films.getOriginalLanguage());
     }
 
     @Test
     public void shouldSetPopularity (){
         films.setPopularity(1.1);
-        assertEquals(films.getPopularity(),1.1,0.00000001);
+        assertEquals(1.1, films.getPopularity(),0.00000001);
     }
 
     @Test
     public void shouldSetOriginalTitle (){
         films.setOriginalTitle("og_title");
-        assertEquals(films.getOriginalTitle(),"og_title");
+        assertEquals("og_title", films.getOriginalTitle());
     }
 
     @Test
     public void shouldSetVideo (){
         films.setAdult(true);
-        assertEquals(films.getAdult(),true);
+        assertEquals(true, films.getAdult());
     }
 
     @Test
     public void shouldSetVoteCount (){
         films.setVoteCount(1);
-        assertEquals(films.getVoteCount().intValue(),1);
+        assertEquals(1, films.getVoteCount().intValue());
     }
 
     @Test
     public void shouldSetId (){
         films.setId(1);
-        assertEquals(films.getId().intValue(),1);
+        assertEquals(1, films.getId().intValue());
     }
 
     @Test
     public void shouldSetTitle (){
         films.setTitle("f_title");
-        assertEquals(films.getTitle(),"f_title");
+        assertEquals("f_title", films.getTitle());
     }
 
     @Test
     public void shouldSetGenresIds (){
         List<Integer> list = new ArrayList<>();
         films.setGenreIds(list);
-        assertEquals(films.getGenreIds(),genresids);
+        assertEquals(genresids, films.getGenreIds());
     }
 
     @Test
     public void shouldSetPosterPath (){
         films.setPosterPath("path");
-        assertEquals(films.getPosterPath(),"path");
+        assertEquals("path", films.getPosterPath());
     }
 
     @Test
     public void shouldSetOverview (){
         films.setOverview("f_overview");
-        assertEquals(films.getOverview(),"f_overview");
+        assertEquals("f_overview", films.getOverview());
     }
 
     @Test
     public void shouldSetRealeaseDate (){
         films.setReleaseDate("f_date");
-        assertEquals(films.getReleaseDate(),"f_date");
+        assertEquals("f_date", films.getReleaseDate());
     }
 
     @Test
     public void shouldSetVoteAverage (){
         films.setVoteAverage(1.1);
-        assertEquals(films.getVoteAverage(),1.1,0.00000001);
+        assertEquals(1.1, films.getVoteAverage(),0.00000001);
     }
 
     @Test
     public void shouldSetTotalVotesMovieCheck (){
         films.setTotalVotesMovieCheck(1);
-        assertEquals(films.getTotalVotesMovieCheck().intValue(),1);
+        assertEquals(1, films.getTotalVotesMovieCheck().intValue());
     }
 
     @Test
     public void shouldSetTotalRatingMovieCheck (){
         films.setTotalRatingMovieCheck(1);
-        assertEquals(films.getTotalRatingMovieCheck().intValue(),1);
+        assertEquals(1, films.getTotalRatingMovieCheck().intValue());
     }
 
     @Before

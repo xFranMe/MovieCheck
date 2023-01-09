@@ -23,10 +23,10 @@ public class CU09_NavigationTabs_UnitTest {
     public void test () throws NoSuchFieldException, IllegalAccessException {
 
         int testSocial = R.layout.class.getField("fragment_item_detail_social").getInt(null);
-        assertNotEquals(testSocial,0);
+        assertNotEquals(0, testSocial);
 
         int testInfo = R.layout.class.getField("fragment_item_detail_info").getInt(null);
-        assertNotEquals(testInfo,0);
+        assertNotEquals(0, testInfo);
     }
 
     @Before

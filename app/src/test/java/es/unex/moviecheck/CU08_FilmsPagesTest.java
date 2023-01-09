@@ -18,47 +18,47 @@ public class CU08_FilmsPagesTest {
 
     @Test
     public void shouldGetPage(){
-        assertEquals(filmsPages.getPage().intValue(),1);
+        assertEquals(1, filmsPages.getPage().intValue());
     }
 
     @Test
     public void shouldGetTotalResults(){
-        assertEquals(filmsPages.getTotalResults().intValue(),1);
+        assertEquals(1, filmsPages.getTotalResults().intValue());
     }
 
     @Test
     public void shouldGetTotalPages(){
-        assertEquals(filmsPages.getTotalPages().intValue(),1);
+        assertEquals(1, filmsPages.getTotalPages().intValue());
     }
 
     @Test
     public void shouldGetResults(){
-        assertEquals(filmsPages.getResults(),films);
+        assertEquals(films, filmsPages.getResults());
     }
 
     @Test
     public void shouldSetPage(){
         filmsPages.setPage(2);
-        assertEquals(filmsPages.getPage().intValue(),2);
+        assertEquals(2, filmsPages.getPage().intValue());
     }
 
     @Test
     public void shouldSetTotalResults(){
         filmsPages.setTotalResults(2);
-        assertEquals(filmsPages.getTotalResults().intValue(),2);
+        assertEquals(2, filmsPages.getTotalResults().intValue());
     }
 
     @Test
     public void shouldSetTotalPages(){
         filmsPages.setTotalPages(2);
-        assertEquals(filmsPages.getTotalPages().intValue(),2);
+        assertEquals(2, filmsPages.getTotalPages().intValue());
     }
 
     @Test
     public void shouldSetResults(){
         List<Films> list = new ArrayList<>();
         filmsPages.setResults(list);
-        assertEquals(filmsPages.getResults(),list);
+        assertEquals(list, filmsPages.getResults());
     }
 
     @Before

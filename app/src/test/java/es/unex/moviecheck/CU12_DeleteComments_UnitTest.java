@@ -13,24 +13,24 @@ public class CU12_DeleteComments_UnitTest {
 
     @Test
     public void shouldGetUsername (){
-        assertEquals(comments.getUsername(),"username");
+        assertEquals("username", comments.getUsername());
     }
 
     @Test
     public void shouldGetFilmId (){
-        assertEquals(comments.getFilmID(),1);
+        assertEquals(1, comments.getFilmID());
     }
 
     @Test
     public void shouldSetUsername (){
         comments.setUsername("user");
-        assertEquals(comments.getUsername(),"user");
+        assertEquals("user", comments.getUsername());
     }
 
     @Test
     public void shouldSetFilmId (){
         comments.setFilmID(2);
-        assertEquals(comments.getFilmID(),2);
+        assertEquals(2, comments.getFilmID());
     }
 
     @Before

@@ -13,35 +13,35 @@ public class CU13_AddRating_UnitTest {
 
     @Test
     public void shouldGetFilmId(){
-        assertEquals(rating.getFilmID(),1);
+        assertEquals(1, rating.getFilmID());
     }
 
     @Test
     public void shouldGetUsername(){
-        assertEquals(rating.getUsername(),"username");
+        assertEquals("username", rating.getUsername());
     }
 
     @Test
     public void shouldGetRating(){
-        assertEquals(rating.getRating(),1);
+        assertEquals(1, rating.getRating());
     }
 
     @Test
     public void shouldSetFilmId(){
         rating.setFilmID(2);
-        assertEquals(rating.getFilmID(),2);
+        assertEquals(2, rating.getFilmID());
     }
 
     @Test
     public void shouldSetUsername(){
         rating.setUsername("user");
-        assertEquals(rating.getUsername(),"user");
+        assertEquals("user", rating.getUsername());
     }
 
     @Test
     public void shouldSetRating(){
         rating.setRating(2);
-        assertEquals(rating.getRating(),2);
+        assertEquals(2, rating.getRating());
     }
 
     @Before

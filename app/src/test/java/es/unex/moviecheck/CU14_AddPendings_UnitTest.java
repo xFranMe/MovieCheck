@@ -13,24 +13,24 @@ public class CU14_AddPendings_UnitTest {
 
     @Test
     public void shouldGetFilmId(){
-        assertEquals(pendings.getFilmID(),1);
+        assertEquals(1, pendings.getFilmID());
     }
 
     @Test
     public void shouldGetUsername(){
-        assertEquals(pendings.getUsername(),"username");
+        assertEquals("username", pendings.getUsername());
     }
 
     @Test
     public void shouldSetFilmId(){
         pendings.setFilmID(2);
-        assertEquals(pendings.getFilmID(),2);
+        assertEquals(2, pendings.getFilmID());
     }
 
     @Test
     public void shouldSetUsername(){
         pendings.setUsername("user");
-        assertEquals(pendings.getUsername(),"user");
+        assertEquals("user", pendings.getUsername());
     }
 
     @Before

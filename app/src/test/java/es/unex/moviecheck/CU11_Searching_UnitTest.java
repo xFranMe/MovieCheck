@@ -2,7 +2,6 @@ package es.unex.moviecheck;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import es.unex.moviecheck.support.LevenshteinSearch;
@@ -12,15 +11,14 @@ public class CU11_Searching_UnitTest {
     protected  String a;
     protected  String b;
     protected  int distance;
-    protected LevenshteinSearch search;
 
     @Test
     public void sameCharactersTest () {
        a = "hola";
        b = "hola";
 
-       distance = search.distance(a,b);
-       assertEquals(distance,0);
+       distance = LevenshteinSearch.distance(a,b);
+       assertEquals(0, distance);
     }
 
     @Test
@@ -28,8 +26,8 @@ public class CU11_Searching_UnitTest {
         a = "hola";
         b = "menu";
 
-        distance = search.distance(a,b);
-        assertEquals(distance,4);
+        distance = LevenshteinSearch.distance(a,b);
+        assertEquals(4, distance);
     }
 
     @Test
@@ -37,12 +35,7 @@ public class CU11_Searching_UnitTest {
         a = "hola";
         b = "ola";
 
-        distance = search.distance(a,b);
-        assertEquals(distance,1);
-    }
-
-    @Before
-    public void initTest(){
-        LevenshteinSearch search = new LevenshteinSearch();
+        distance = LevenshteinSearch.distance(a,b);
+        assertEquals(1, distance);
     }
 }

@@ -13,46 +13,46 @@ public class CU03_AddComments_UnitTest {
 
     @Test
     public void shouldGetCommentId (){
-        assertEquals(comments.getCommentID(),1);
+        assertEquals(1, comments.getCommentID());
     }
 
     @Test
     public void shouldGetUsername (){
-        assertEquals(comments.getUsername(),"username");
+        assertEquals("username", comments.getUsername());
     }
 
     @Test
     public void shouldGetFilmId (){
-        assertEquals(comments.getFilmID(),1);
+        assertEquals(1, comments.getFilmID());
     }
 
     @Test
     public void shouldGetText (){
-        assertEquals(comments.getText(),"text");
+        assertEquals("text", comments.getText());
     }
 
     @Test
     public void shouldSetCommentId  (){
         comments.setCommentID(2);
-        assertEquals(comments.getCommentID(),2);
+        assertEquals(2, comments.getCommentID());
     }
 
     @Test
     public void shouldSetUsername (){
         comments.setUsername("user");
-        assertEquals(comments.getUsername(),"user");
+        assertEquals("user", comments.getUsername());
     }
 
     @Test
     public void shouldSetFilmId (){
         comments.setFilmID(2);
-        assertEquals(comments.getFilmID(),2);
+        assertEquals(2, comments.getFilmID());
     }
 
     @Test
     public void shouldSetText (){
         comments.setText("comment");
-        assertEquals(comments.getText(),"comment");
+        assertEquals("comment", comments.getText());
     }
 
     @Before
