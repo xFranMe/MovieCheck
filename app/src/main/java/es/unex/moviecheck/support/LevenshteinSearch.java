@@ -1,6 +1,11 @@
 package es.unex.moviecheck.support;
 
 public class LevenshteinSearch {
+
+    private LevenshteinSearch() {
+        throw new IllegalStateException("LevenshteinSearch class");
+    }
+
     public static int distance(String a, String b) {
         a = a.toLowerCase();
         b = b.toLowerCase();

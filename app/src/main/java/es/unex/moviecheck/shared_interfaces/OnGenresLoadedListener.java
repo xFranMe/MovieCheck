@@ -1,4 +1,4 @@
-package es.unex.moviecheck.sharedInterfaces;
+package es.unex.moviecheck.shared_interfaces;
 
 import java.util.List;
 

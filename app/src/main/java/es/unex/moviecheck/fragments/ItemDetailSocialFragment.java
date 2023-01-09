@@ -33,7 +33,7 @@ import es.unex.moviecheck.R;
 import es.unex.moviecheck.adapters.CommentAdapter;
 import es.unex.moviecheck.model.Comments;
 import es.unex.moviecheck.model.Films;
-import es.unex.moviecheck.sharedInterfaces.ItemDetailInterface;
+import es.unex.moviecheck.shared_interfaces.ItemDetailInterface;
 import es.unex.moviecheck.viewmodels.ItemDetailSocialFragmentViewModel;
 
 public class ItemDetailSocialFragment extends Fragment  {
@@ -63,6 +63,7 @@ public class ItemDetailSocialFragment extends Fragment  {
         // Required empty public constructor
     }
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

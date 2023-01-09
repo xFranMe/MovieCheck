@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
      * En caso afirmativo, se inicia la actividad HomeActivity y se mantiene la sesión del usuario referenciado.
      */
     public void autoLogin(){
-        if(!loginPreferences.getString("USERNAME", "").equals("")){
+        if(!loginPreferences.getString(USERNAME, "").equals("")){
             // El usuario ya se ha loggeado o registrado anteriormente en el dispositivo y aún no ha cerrado sesión
             // Inicio de sesión automático, es decir, el usuario no introduce sus credenciales y se usa el valor de la preferencia como referencia al usuario loggeado
             Toast.makeText(this, getString(R.string.auto_login) + " " + loginPreferences.getString(USERNAME, ""), Toast.LENGTH_SHORT).show();

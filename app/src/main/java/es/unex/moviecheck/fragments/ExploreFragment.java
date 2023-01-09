@@ -26,8 +26,8 @@ import es.unex.moviecheck.MyApplication;
 import es.unex.moviecheck.adapters.FilmAdapter;
 import es.unex.moviecheck.model.Films;
 import es.unex.moviecheck.model.Genre;
-import es.unex.moviecheck.sharedInterfaces.OnFilmsLoadedListener;
-import es.unex.moviecheck.sharedInterfaces.OnGenresLoadedListener;
+import es.unex.moviecheck.shared_interfaces.OnFilmsLoadedListener;
+import es.unex.moviecheck.shared_interfaces.OnGenresLoadedListener;
 import es.unex.moviecheck.viewmodels.ExploreFragmentViewModel;
 import es.unex.moviecheck.R;
 
@@ -44,7 +44,7 @@ public class ExploreFragment extends Fragment implements OnFilmsLoadedListener, 
     // Referencia al ViewModel
     ExploreFragmentViewModel exploreFragmentViewModel;
 
-
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

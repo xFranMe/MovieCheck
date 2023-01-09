@@ -2,7 +2,7 @@ package es.unex.moviecheck;
 
 import android.content.Context;
 
-import es.unex.moviecheck.network.FilmsNetworkDataSource;
+import es.unex.moviecheck.network_api.FilmsNetworkDataSource;
 import es.unex.moviecheck.repository.Repository;
 import es.unex.moviecheck.repository.UsersRepository;
 import es.unex.moviecheck.room.FilmsDatabase;

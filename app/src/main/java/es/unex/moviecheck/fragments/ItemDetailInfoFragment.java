@@ -21,7 +21,7 @@ import es.unex.moviecheck.AppContainer;
 import es.unex.moviecheck.MyApplication;
 import es.unex.moviecheck.R;
 import es.unex.moviecheck.model.Films;
-import es.unex.moviecheck.sharedInterfaces.ItemDetailInterface;
+import es.unex.moviecheck.shared_interfaces.ItemDetailInterface;
 import es.unex.moviecheck.viewmodels.ItemDetailInfoFragmentViewModel;
 
 public class ItemDetailInfoFragment extends Fragment {

@@ -14,7 +14,7 @@ import es.unex.moviecheck.adapters.CommentAdapter;
 import es.unex.moviecheck.adapters.TabsViewPagerAdapter;
 import es.unex.moviecheck.model.Comments;
 import es.unex.moviecheck.model.Films;
-import es.unex.moviecheck.sharedInterfaces.ItemDetailInterface;
+import es.unex.moviecheck.shared_interfaces.ItemDetailInterface;
 import es.unex.moviecheck.viewmodels.ItemDetailActivityViewModel;
 import es.unex.moviecheck.R;
 

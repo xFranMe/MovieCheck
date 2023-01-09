@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import es.unex.moviecheck.model.User;
 import es.unex.moviecheck.room.UserDAO;
@@ -65,7 +66,7 @@ public class UsersRepository {
      * Retorna el HashMap de consulta que utiliza como clave de mapeo el nombre del usuario.
      * @return HashMap de usuarios por clave de nombre de usuario.
      */
-    public HashMap<String, User> getUsersByUsername() {
+    public Map<String, User> getUsersByUsername() {
         return usersInDBByUsername;
     }
 
@@ -73,7 +74,7 @@ public class UsersRepository {
      * Retorna el HashMap de consulta que utiliza como clave de mapeo el email del usuario.
      * @return HashMap de usuarios por clave de email.
      */
-    public HashMap<String, User> getUsersByEmail() {
+    public Map<String, User> getUsersByEmail() {
         return usersInDBByEmail;
     }
 

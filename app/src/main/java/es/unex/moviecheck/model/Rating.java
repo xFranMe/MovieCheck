@@ -17,12 +17,12 @@ public class Rating {
     @NonNull
     @ColumnInfo(name="username")
     private String username;
-    private int rating;
+    private int ratingValue;
 
-    public Rating(int filmID, @NonNull String username, int rating){
+    public Rating(int filmID, @NonNull String username, int ratingValue){
         this.filmID = filmID;
         this.username = username;
-        this.rating = rating;
+        this.ratingValue = ratingValue;
     }
 
     // Métodos SET and GET de valoración
@@ -43,11 +43,11 @@ public class Rating {
         this.username = username;
     }
 
-    public int getRating() {
-        return rating;
+    public int getRatingValue() {
+        return ratingValue;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setRatingValue(int ratingValue) {
+        this.ratingValue = ratingValue;
     }
 }

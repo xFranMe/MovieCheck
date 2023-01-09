@@ -16,7 +16,7 @@ import java.util.List;
 import es.unex.moviecheck.R;
 import es.unex.moviecheck.model.Comments;
 
-public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.commentAdapterViewHolder> {
+public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentAdapterViewHolder> {
 
     private List<Comments> commentList;
     private final DeleteCommentInterface deleteCommentInterface;
@@ -30,13 +30,13 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.commentA
 
     @NonNull
     @Override
-    public commentAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CommentAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.social_item_list_content, parent,false);
-        return new commentAdapterViewHolder(view);
+        return new CommentAdapterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull commentAdapterViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull CommentAdapterViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.user.setText(commentList.get(position).getUsername());
         holder.text.setText(commentList.get(position).getText());
         if (commentList.get(position).getUsername().equals(userLogged)){
@@ -54,12 +54,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.commentA
         return commentList.size();
     }
 
-    public static class commentAdapterViewHolder extends RecyclerView.ViewHolder {
+    public static class CommentAdapterViewHolder extends RecyclerView.ViewHolder {
         final TextView user;
         final TextView text;
         final ImageButton deleteCommentButton;
 
-        commentAdapterViewHolder(View view) {
+        CommentAdapterViewHolder(View view) {
             super(view);
             user = view.findViewById(R.id.tvUsernameComment);
             text = view.findViewById(R.id.tvCommentText);

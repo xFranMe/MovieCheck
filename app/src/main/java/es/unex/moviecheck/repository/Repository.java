@@ -20,7 +20,7 @@ import es.unex.moviecheck.model.Films;
 import es.unex.moviecheck.model.Genre;
 import es.unex.moviecheck.model.Pendings;
 import es.unex.moviecheck.model.Rating;
-import es.unex.moviecheck.network.FilmsNetworkDataSource;
+import es.unex.moviecheck.network_api.FilmsNetworkDataSource;
 import es.unex.moviecheck.room.CommentDAO;
 import es.unex.moviecheck.room.FavoritesDAO;
 import es.unex.moviecheck.room.FilmDAO;
@@ -112,7 +112,7 @@ public class Repository {
         doFetchFilmsAndGenres();
     }
 
-    public synchronized static Repository getInstance(FilmDAO filmDAO, FavoritesDAO favoritesDAO, PendingsDAO pendingsDAO, CommentDAO commentDAO, RatingDAO ratingDAO, GenreDAO genreDAO, FilmsGenresListDAO filmsGenresListDAO, FilmsNetworkDataSource filmsNetworkDataSource) {
+    public static synchronized Repository getInstance(FilmDAO filmDAO, FavoritesDAO favoritesDAO, PendingsDAO pendingsDAO, CommentDAO commentDAO, RatingDAO ratingDAO, GenreDAO genreDAO, FilmsGenresListDAO filmsGenresListDAO, FilmsNetworkDataSource filmsNetworkDataSource) {
         Log.d(LOG_TAG, "Obteniendo el Repositorio");
         if (sInstance == null) {
             sInstance = new Repository(filmDAO, favoritesDAO, pendingsDAO, commentDAO, ratingDAO, genreDAO, filmsGenresListDAO, filmsNetworkDataSource);

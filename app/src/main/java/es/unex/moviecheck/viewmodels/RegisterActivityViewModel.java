@@ -81,7 +81,7 @@ public class RegisterActivityViewModel extends ViewModel {
         Matcher matcher;
 
         // Una contraseña válida debe contener como mínimo un dígito, una letra minúscula y una letra mayúscula. Además, no se permiten espacios y la longitud debe ser mayor o igual que 6, pero menor o igual que 16
-        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{6,16}$";
+        final String PASSWORD_PATTERN = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{6,16}$";
 
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(password);

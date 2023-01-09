@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import es.unex.moviecheck.model.FilmsPages;
 import es.unex.moviecheck.model.GenresList;
-import es.unex.moviecheck.network.FilmAPI;
+import es.unex.moviecheck.network_api.FilmAPI;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import retrofit2.Call;

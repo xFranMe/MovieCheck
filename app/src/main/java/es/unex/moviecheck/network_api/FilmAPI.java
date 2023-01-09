@@ -1,4 +1,4 @@
-package es.unex.moviecheck.network;
+package es.unex.moviecheck.network_api;
 
 import es.unex.moviecheck.model.FilmsPages;
 import es.unex.moviecheck.model.GenresList;

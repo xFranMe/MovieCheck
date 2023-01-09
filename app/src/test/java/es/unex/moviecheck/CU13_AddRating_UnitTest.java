@@ -23,7 +23,7 @@ public class CU13_AddRating_UnitTest {
 
     @Test
     public void shouldGetRating(){
-        assertEquals(1, rating.getRating());
+        assertEquals(1, rating.getRatingValue());
     }
 
     @Test
@@ -40,8 +40,8 @@ public class CU13_AddRating_UnitTest {
 
     @Test
     public void shouldSetRating(){
-        rating.setRating(2);
-        assertEquals(2, rating.getRating());
+        rating.setRatingValue(2);
+        assertEquals(2, rating.getRatingValue());
     }
 
     @Before
