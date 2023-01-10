@@ -282,7 +282,7 @@ public class Repository {
     }
 
     /**
-     * Métodos relacionados con la información de una película concreta
+     * Métodos relacionados con la información de una película concreta.
      */
 
     public LiveData<List<Comments>> getFilmComments(Films film) {
