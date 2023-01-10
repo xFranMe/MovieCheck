@@ -32,7 +32,7 @@ public class UsersRepository {
         getAllUsers();
     }
 
-    public synchronized static UsersRepository getInstance(UserDAO userDAO) {
+    public static synchronized UsersRepository getInstance(UserDAO userDAO) {
         Log.d(LOG_TAG, "Obteniendo el Repositorio de Usuarios");
         if (sInstance == null) {
             sInstance = new UsersRepository(userDAO);

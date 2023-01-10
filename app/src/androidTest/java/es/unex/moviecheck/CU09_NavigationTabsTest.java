@@ -208,19 +208,11 @@ public class CU09_NavigationTabsTest {
         tabView2.perform(click());
 
         viewPager.check(matches(isDisplayed()));
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         viewPager.perform(swipeLeft());
 
         viewGroup.check(matches(isDisplayed()));
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         viewGroup.perform(swipeRight());
 
         viewPager.check(matches(isDisplayed()));

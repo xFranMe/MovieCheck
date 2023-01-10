@@ -75,11 +75,6 @@ public class CU11_SearchingTest {
                 db.genreDAO().insertGenre(genre);
                 for(Integer genreId: genresids){
                     db.filmsGenresListDAO().insertFilmGenre(films.getId(), genreId);
-                    try {
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 }
             }
         });

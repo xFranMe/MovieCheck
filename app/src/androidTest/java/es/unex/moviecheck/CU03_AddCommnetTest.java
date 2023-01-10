@@ -150,12 +150,6 @@ public class CU03_AddCommnetTest extends Application {
                                 7)));
         materialButton.perform(scrollTo(), click());
 
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.fragment_explore),
                         childAtPosition(
