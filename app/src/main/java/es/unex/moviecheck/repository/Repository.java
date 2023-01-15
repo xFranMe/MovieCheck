@@ -271,7 +271,7 @@ public class Repository {
     }
 
     /**
-     * Elimina una película del HashMap de películas pendientes del usuario y de la base de datos.
+     * Elimina una película del HashMap de películas pendientes del usuario y también de la base de datos.
      * Se mantienen actualizadas ambas estructuras para asegurar persistencia al mismo tiempo que consultas con complejidad temporal O(1).
      *
      * @param film Película desmarcada como pendiente por el usuario.
