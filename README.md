@@ -10,4 +10,4 @@ This app has been developed as a small project for a software engineering degree
 
 ## About documentation
 
-Documentation and more info about this application can be found in this repository's wiki (Spanish).
+Documentation and more info about this app can be found in [this repository's wiki](https://github.com/xFranMe/MovieCheck/wiki) (Spanish).
